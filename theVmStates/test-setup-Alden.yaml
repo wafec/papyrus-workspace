@@ -1,0 +1,78 @@
+!setup
+generic: !conf
+  classpath: H:\WINDOWS\Development\javadocto\xstate\out\production\classes
+  coverageTransitionSet: 
+  - init_t_active
+  coverageTransitionSetIdentifier: name
+  instanceSpecFilePath: instanceSpec.yaml
+  inputQualifiedNames:
+  - root.signals.Build
+  knowableStateIdentities: 
+  - ACTIVE
+  - RUNNING
+  - PAUSED
+  - STOPPED
+  - SUSPENDED
+  - RESIZED
+  - SHELVED
+  - DELETED
+  - INIT
+  stateIdentities: []
+  stateIdentitiesIdentifier: name
+  testClassQualifiedName: root.Vm
+  xmiFilePath: theVmStates.uml
+  userDefinedStateInputMappings:
+  - !stateInputMapping
+    stateIdentity: __default__
+    inputClassQualifiedName: root.signals.Build
+    fieldName: flavor_processors
+    lowerBound: 0
+    upperBound: 10
+  - !stateInputMapping
+    stateIdentity: __default__
+    inputClassQualifiedName: root.signals.Build
+    fieldName: flavor_memory
+    lowerBound: 0
+    upperBound: 1000
+  - !stateInputMapping
+    stateIdentity: __default__
+    inputClassQualifiedName: root.signals.Build
+    fieldName: flavor_storage
+    lowerBound: 0
+    upperBound: 10
+  - !stateInputMapping
+    stateIdentity: __default__
+    inputClassQualifiedName: root.signals.Build
+    fieldName: image
+    lowerBound: 0
+    upperBound: 1
+  - !stateInputMapping
+    stateIdentity: __default__
+    inputClassQualifiedName: root.signals.Resize
+    fieldName: flavor_processors
+    lowerBound: 0
+    upperBound: 10
+  - !stateInputMapping
+    stateIdentity: __default__
+    inputClassQualifiedName: root.signals.Resize
+    fieldName: flavor_memory
+    lowerBound: 0
+    upperBound: 1000
+  - !stateInputMapping
+    stateIdentity: __default__
+    inputClassQualifiedName: root.signals.Resize
+    fieldName: flavor_storage
+    lowerBound: 0
+    upperBound: 10
+  - !stateInputMapping
+    stateIdentity: __default__
+    inputClassQualifiedName: root.signals.Rebuild
+    fieldName: image
+    lowerBound: 0
+    upperBound: 1
+method: !mgeovsl
+  maxVars: 60
+  minVars: 50
+  numberOfIndependentRuns: 1
+  numberOfIterations: 5000
+  tau: 0.95

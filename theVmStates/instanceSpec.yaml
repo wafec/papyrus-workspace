@@ -1,0 +1,9 @@
+image: 0
+limits:
+  processors: 4
+  memory: 512
+  storage: 5
+flavor:
+  processors: 0
+  memory: 0
+  storage: 0

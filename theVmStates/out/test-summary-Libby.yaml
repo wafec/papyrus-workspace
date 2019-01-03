@@ -1,0 +1,37 @@
+!testSummary
+fictitiousName: Libby
+generatedTestCases: 
+- test-case-Monique.yaml
+states: 
+   _queY8Aa2EemGqa4rhguvBA: DELETED
+   _TFQ94Aa0EemGqa4rhguvBA: STOPPED
+   _9FO_wAa0EemGqa4rhguvBA: RESIZED
+   _mfg-0AauEemGqa4rhguvBA: ACTIVE
+   _tOPgoAauEemGqa4rhguvBA: INIT
+   _mWT4IAaxEemGqa4rhguvBA: PAUSED
+   _W26_sAa2EemGqa4rhguvBA: SUSPENDED
+   _mvRnOQawEemGqa4rhguvBA: RUNNING
+   _vUjTkAazEemGqa4rhguvBA: SHELVED
+statesIdentifier: name
+transitions: 
+   _sPcC4AnLEemfvIaM__DpQQ: running_t_running_e_rebuild
+   _1v5_sAauEemGqa4rhguvBA: init_t_active
+   _hyWdYAa0EemGqa4rhguvBA: stopped_t_running
+   _5YFYkAa0EemGqa4rhguvBA: stopped_t_paused
+   _ihssIAazEemGqa4rhguvBA: running_t_paused
+   _rY1MQAawEemGqa4rhguvBA: ""
+   _yjUVoAazEemGqa4rhguvBA: running_t_shelved
+   _effwEAa1EemGqa4rhguvBA: running_t_resized
+   _njGpIAa2EemGqa4rhguvBA: suspended_t_shelved
+   _VWc9YAa0EemGqa4rhguvBA: running_t_stopped
+   _EhS-IAa0EemGqa4rhguvBA: shelved_t_running
+   _qJJTwAa1EemGqa4rhguvBA: resized_t_running
+   _0jDyEAauEemGqa4rhguvBA: ""
+   _-yz74Aa0EemGqa4rhguvBA: stopped_t_resized
+   _PhpbQAa2EemGqa4rhguvBA: running_t_running
+   __jUWUAa1EemGqa4rhguvBA: stopped_t_shelved
+   _Yp9DkAa2EemGqa4rhguvBA: running_t_suspended
+   _hPzfEAa2EemGqa4rhguvBA: suspended_t_running
+   _p1pa4AazEemGqa4rhguvBA: paused_t_running
+   _sE3kIAa2EemGqa4rhguvBA: active_t_deleted
+transitionsIdentifier: name

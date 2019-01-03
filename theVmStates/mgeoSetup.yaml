@@ -1,0 +1,7 @@
+!setup
+method: !mgeovsl
+  tau: 3.75
+  numberOfIterations: 10000
+  numberOfIndependentRuns: 2
+  maxVars: 500
+  minVars: 100

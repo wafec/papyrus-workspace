@@ -1,0 +1,24 @@
+!setup
+generic: !conf
+  coverageTransitionSet:
+    - init_t_active
+    - shelved_t_running
+    - running_t_resized
+    - stopped_t_resized
+    - running_t_running_e_rebuild
+  inputQualifiedNames:
+    - root.signals.Build
+    - root.signals.Pause
+    - root.signals.Unpause
+    - root.signals.Shelve
+    - root.signals.Reboot
+    - root.signals.Resume
+    - root.signals.Rebuild
+    - root.signals.Shutoff
+    - root.signals.Unshelve
+    - root.signals.Resize
+    - root.signals.Start
+    - root.signals.Delete
+    - root.signals.Confirm
+    - root.signals.Revert
+    - root.signals.Suspend

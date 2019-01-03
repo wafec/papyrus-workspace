@@ -13,81 +13,83 @@
       <ownedBehavior xmi:type="uml:StateMachine" xmi:id="_hQ_rgAauEemGqa4rhguvBA" name="VmStates">
         <region xmi:type="uml:Region" xmi:id="_iQzisAauEemGqa4rhguvBA" name="Region1">
           <transition xmi:type="uml:Transition" xmi:id="_0jDyEAauEemGqa4rhguvBA" source="_phN1QAauEemGqa4rhguvBA" target="_tOPgoAauEemGqa4rhguvBA"/>
-          <transition xmi:type="uml:Transition" xmi:id="_1v5_sAauEemGqa4rhguvBA" guard="_gbDQEAawEemGqa4rhguvBA" source="_tOPgoAauEemGqa4rhguvBA" target="_mfg-0AauEemGqa4rhguvBA">
+          <transition xmi:type="uml:Transition" xmi:id="_1v5_sAauEemGqa4rhguvBA" name="init_t_active" guard="_gbDQEAawEemGqa4rhguvBA" source="_tOPgoAauEemGqa4rhguvBA" target="_mfg-0AauEemGqa4rhguvBA">
             <ownedRule xmi:type="uml:Constraint" xmi:id="_gbDQEAawEemGqa4rhguvBA">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_gbDQEQawEemGqa4rhguvBA">
                 <language>JAVA</language>
-                <body>event.flavor.processors > 0 &amp;&amp; event.flavor.processors &lt; limits.processors &amp;&amp; event.flavor.memory > 0 &amp;&amp; event.flavor.memory &lt; limits.memory &amp;&amp; event.flavor.storage >= 0 &amp;&amp; event.flavor.storage &lt; limits.storage</body>
+                <body>event.flavor_processors > 0 &amp;&amp; event.flavor_processors &lt; limits.processors</body>
               </specification>
             </ownedRule>
             <trigger xmi:type="uml:Trigger" xmi:id="_ywADkAavEemGqa4rhguvBA" event="_yf05kAavEemGqa4rhguvBA"/>
           </transition>
-          <transition xmi:type="uml:Transition" xmi:id="_sE3kIAa2EemGqa4rhguvBA" source="_mfg-0AauEemGqa4rhguvBA" target="_queY8Aa2EemGqa4rhguvBA">
+          <transition xmi:type="uml:Transition" xmi:id="_sE3kIAa2EemGqa4rhguvBA" name="active_t_deleted" source="_mfg-0AauEemGqa4rhguvBA" target="_queY8Aa2EemGqa4rhguvBA">
             <trigger xmi:type="uml:Trigger" xmi:id="_wzmkIAa2EemGqa4rhguvBA" event="_wq8-cAa2EemGqa4rhguvBA"/>
           </transition>
           <subvertex xmi:type="uml:State" xmi:id="_mfg-0AauEemGqa4rhguvBA" name="ACTIVE">
             <region xmi:type="uml:Region" xmi:id="_mvRnMgawEemGqa4rhguvBA" name="Region1">
               <transition xmi:type="uml:Transition" xmi:id="_rY1MQAawEemGqa4rhguvBA" source="_qg9wIAawEemGqa4rhguvBA" target="_mvRnOQawEemGqa4rhguvBA"/>
-              <transition xmi:type="uml:Transition" xmi:id="_ihssIAazEemGqa4rhguvBA" source="_mvRnOQawEemGqa4rhguvBA" target="_mWT4IAaxEemGqa4rhguvBA">
+              <transition xmi:type="uml:Transition" xmi:id="_ihssIAazEemGqa4rhguvBA" name="running_t_paused" source="_mvRnOQawEemGqa4rhguvBA" target="_mWT4IAaxEemGqa4rhguvBA">
                 <trigger xmi:type="uml:Trigger" xmi:id="_mooFQAazEemGqa4rhguvBA" event="_mgYIMAazEemGqa4rhguvBA"/>
               </transition>
-              <transition xmi:type="uml:Transition" xmi:id="_p1pa4AazEemGqa4rhguvBA" source="_mWT4IAaxEemGqa4rhguvBA" target="_mvRnOQawEemGqa4rhguvBA">
+              <transition xmi:type="uml:Transition" xmi:id="_p1pa4AazEemGqa4rhguvBA" name="paused_t_running" source="_mWT4IAaxEemGqa4rhguvBA" target="_mvRnOQawEemGqa4rhguvBA">
                 <trigger xmi:type="uml:Trigger" xmi:id="_uASPUAazEemGqa4rhguvBA" event="_t0vtsAazEemGqa4rhguvBA"/>
               </transition>
-              <transition xmi:type="uml:Transition" xmi:id="_yjUVoAazEemGqa4rhguvBA" source="_mvRnOQawEemGqa4rhguvBA" target="_vUjTkAazEemGqa4rhguvBA">
+              <transition xmi:type="uml:Transition" xmi:id="_yjUVoAazEemGqa4rhguvBA" name="running_t_shelved" source="_mvRnOQawEemGqa4rhguvBA" target="_vUjTkAazEemGqa4rhguvBA">
                 <trigger xmi:type="uml:Trigger" xmi:id="_D3z8QAa0EemGqa4rhguvBA" event="_Ds1bUAa0EemGqa4rhguvBA"/>
               </transition>
-              <transition xmi:type="uml:Transition" xmi:id="_EhS-IAa0EemGqa4rhguvBA" source="_vUjTkAazEemGqa4rhguvBA" target="_mvRnOQawEemGqa4rhguvBA">
+              <transition xmi:type="uml:Transition" xmi:id="_EhS-IAa0EemGqa4rhguvBA" name="shelved_t_running" source="_vUjTkAazEemGqa4rhguvBA" target="_mvRnOQawEemGqa4rhguvBA">
                 <trigger xmi:type="uml:Trigger" xmi:id="_I9juEAa0EemGqa4rhguvBA" event="_I2DX4Aa0EemGqa4rhguvBA"/>
               </transition>
-              <transition xmi:type="uml:Transition" xmi:id="_VWc9YAa0EemGqa4rhguvBA" source="_mvRnOQawEemGqa4rhguvBA" target="_TFQ94Aa0EemGqa4rhguvBA">
+              <transition xmi:type="uml:Transition" xmi:id="_VWc9YAa0EemGqa4rhguvBA" name="running_t_stopped" source="_mvRnOQawEemGqa4rhguvBA" target="_TFQ94Aa0EemGqa4rhguvBA">
                 <trigger xmi:type="uml:Trigger" xmi:id="_b6jjkAa0EemGqa4rhguvBA" event="_b0kQUAa0EemGqa4rhguvBA"/>
               </transition>
-              <transition xmi:type="uml:Transition" xmi:id="_hyWdYAa0EemGqa4rhguvBA" source="_TFQ94Aa0EemGqa4rhguvBA" target="_mvRnOQawEemGqa4rhguvBA">
+              <transition xmi:type="uml:Transition" xmi:id="_hyWdYAa0EemGqa4rhguvBA" name="stopped_t_running" source="_TFQ94Aa0EemGqa4rhguvBA" target="_mvRnOQawEemGqa4rhguvBA">
                 <trigger xmi:type="uml:Trigger" xmi:id="_mT4H0Aa0EemGqa4rhguvBA" event="_l3xaoAa0EemGqa4rhguvBA"/>
                 <trigger xmi:type="uml:Trigger" xmi:id="_yiahQAa0EemGqa4rhguvBA" event="_yaBaQAa0EemGqa4rhguvBA"/>
                 <trigger xmi:type="uml:Trigger" xmi:id="_3Js1cAa0EemGqa4rhguvBA" event="_2T1kcAa0EemGqa4rhguvBA"/>
               </transition>
-              <transition xmi:type="uml:Transition" xmi:id="_5YFYkAa0EemGqa4rhguvBA" source="_TFQ94Aa0EemGqa4rhguvBA" target="_mWT4IAaxEemGqa4rhguvBA">
+              <transition xmi:type="uml:Transition" xmi:id="_5YFYkAa0EemGqa4rhguvBA" name="stopped_t_paused" source="_TFQ94Aa0EemGqa4rhguvBA" target="_mWT4IAaxEemGqa4rhguvBA">
                 <trigger xmi:type="uml:Trigger" xmi:id="_7u4Q0Aa0EemGqa4rhguvBA" event="_mgYIMAazEemGqa4rhguvBA"/>
               </transition>
-              <transition xmi:type="uml:Transition" xmi:id="_-yz74Aa0EemGqa4rhguvBA" guard="_Y0bDoAa1EemGqa4rhguvBA" source="_TFQ94Aa0EemGqa4rhguvBA" target="_9FO_wAa0EemGqa4rhguvBA">
+              <transition xmi:type="uml:Transition" xmi:id="_-yz74Aa0EemGqa4rhguvBA" name="stopped_t_resized" guard="_Y0bDoAa1EemGqa4rhguvBA" source="_TFQ94Aa0EemGqa4rhguvBA" target="_9FO_wAa0EemGqa4rhguvBA">
                 <ownedRule xmi:type="uml:Constraint" xmi:id="_Y0bDoAa1EemGqa4rhguvBA">
                   <specification xmi:type="uml:OpaqueExpression" xmi:id="_Y0bDoQa1EemGqa4rhguvBA">
                     <language>JAVA</language>
-                    <body>event.flavor.processors > 0 &amp;&amp; event.flavor.processors &lt; limits.processors &amp;&amp; event.flavor.memory > 0 &amp;&amp; event.flavor.memory &lt; limits.memory &amp;&amp; event.flavor.storage >= 0 &amp;&amp; event.flavor.storage &lt; limits.storage</body>
+                    <body>event.flavor_processors > 0 &amp;&amp; event.flavor_processors &lt;= limits.processors &amp;&amp; event.flavor_memory > 0 &amp;&amp; event.flavor_memory &lt;= limits.memory &amp;&amp; event.flavor_storage >= 0 &amp;&amp; event.flavor_storage &lt;= limits.storage</body>
                   </specification>
                 </ownedRule>
                 <trigger xmi:type="uml:Trigger" xmi:id="_J3XOcAa1EemGqa4rhguvBA" event="_JXh30Aa1EemGqa4rhguvBA"/>
               </transition>
-              <transition xmi:type="uml:Transition" xmi:id="_effwEAa1EemGqa4rhguvBA" guard="_o5V4wAa1EemGqa4rhguvBA" source="_mvRnOQawEemGqa4rhguvBA" target="_9FO_wAa0EemGqa4rhguvBA">
+              <transition xmi:type="uml:Transition" xmi:id="_effwEAa1EemGqa4rhguvBA" name="running_t_resized" guard="_o5V4wAa1EemGqa4rhguvBA" source="_mvRnOQawEemGqa4rhguvBA" target="_9FO_wAa0EemGqa4rhguvBA">
                 <ownedRule xmi:type="uml:Constraint" xmi:id="_o5V4wAa1EemGqa4rhguvBA">
                   <specification xmi:type="uml:OpaqueExpression" xmi:id="_o5V4wQa1EemGqa4rhguvBA">
                     <language>JAVA</language>
-                    <body>event.flavor.processors > 0 &amp;&amp; event.flavor.processors &lt; limits.processors &amp;&amp; event.flavor.memory > 0 &amp;&amp; event.flavor.memory &lt; limits.memory &amp;&amp; event.flavor.storage >= 0 &amp;&amp; event.flavor.storage &lt; limits.storage</body>
+                    <body>event.flavor_processors > 0 &amp;&amp; event.flavor_processors &lt;= limits.processors &amp;&amp; event.flavor_memory > 0 &amp;&amp; event.flavor_memory &lt;= limits.memory &amp;&amp; event.flavor_storage >= 0 &amp;&amp; event.flavor_storage &lt;= limits.storage</body>
                   </specification>
                 </ownedRule>
                 <trigger xmi:type="uml:Trigger" xmi:id="_f5PxQAa1EemGqa4rhguvBA" event="_JXh30Aa1EemGqa4rhguvBA"/>
               </transition>
-              <transition xmi:type="uml:Transition" xmi:id="_qJJTwAa1EemGqa4rhguvBA" source="_9FO_wAa0EemGqa4rhguvBA" target="_mvRnOQawEemGqa4rhguvBA">
+              <transition xmi:type="uml:Transition" xmi:id="_qJJTwAa1EemGqa4rhguvBA" name="resized_t_running" source="_9FO_wAa0EemGqa4rhguvBA" target="_mvRnOQawEemGqa4rhguvBA">
                 <trigger xmi:type="uml:Trigger" xmi:id="_x0FmMAa1EemGqa4rhguvBA" event="_xp1eAAa1EemGqa4rhguvBA"/>
                 <trigger xmi:type="uml:Trigger" xmi:id="_38FfMAa1EemGqa4rhguvBA" event="_30ozYAa1EemGqa4rhguvBA"/>
               </transition>
-              <transition xmi:type="uml:Transition" xmi:id="__jUWUAa1EemGqa4rhguvBA" source="_TFQ94Aa0EemGqa4rhguvBA" target="_vUjTkAazEemGqa4rhguvBA">
+              <transition xmi:type="uml:Transition" xmi:id="__jUWUAa1EemGqa4rhguvBA" name="stopped_t_shelved" source="_TFQ94Aa0EemGqa4rhguvBA" target="_vUjTkAazEemGqa4rhguvBA">
                 <trigger xmi:type="uml:Trigger" xmi:id="_I7CToAa2EemGqa4rhguvBA" event="_Ds1bUAa0EemGqa4rhguvBA"/>
               </transition>
-              <transition xmi:type="uml:Transition" xmi:id="_PhpbQAa2EemGqa4rhguvBA" source="_mvRnOQawEemGqa4rhguvBA" target="_mvRnOQawEemGqa4rhguvBA">
-                <trigger xmi:type="uml:Trigger" xmi:id="_TJgSwAa2EemGqa4rhguvBA" event="_2T1kcAa0EemGqa4rhguvBA"/>
+              <transition xmi:type="uml:Transition" xmi:id="_PhpbQAa2EemGqa4rhguvBA" name="running_t_running" source="_mvRnOQawEemGqa4rhguvBA" target="_mvRnOQawEemGqa4rhguvBA">
                 <trigger xmi:type="uml:Trigger" xmi:id="_USmo0Aa2EemGqa4rhguvBA" event="_yaBaQAa0EemGqa4rhguvBA"/>
               </transition>
-              <transition xmi:type="uml:Transition" xmi:id="_Yp9DkAa2EemGqa4rhguvBA" source="_mvRnOQawEemGqa4rhguvBA" target="_W26_sAa2EemGqa4rhguvBA">
+              <transition xmi:type="uml:Transition" xmi:id="_Yp9DkAa2EemGqa4rhguvBA" name="running_t_suspended" source="_mvRnOQawEemGqa4rhguvBA" target="_W26_sAa2EemGqa4rhguvBA">
                 <trigger xmi:type="uml:Trigger" xmi:id="_euQIUAa2EemGqa4rhguvBA" event="_eiKNEAa2EemGqa4rhguvBA"/>
               </transition>
-              <transition xmi:type="uml:Transition" xmi:id="_hPzfEAa2EemGqa4rhguvBA" source="_W26_sAa2EemGqa4rhguvBA" target="_mvRnOQawEemGqa4rhguvBA">
+              <transition xmi:type="uml:Transition" xmi:id="_hPzfEAa2EemGqa4rhguvBA" name="suspended_t_running" source="_W26_sAa2EemGqa4rhguvBA" target="_mvRnOQawEemGqa4rhguvBA">
                 <trigger xmi:type="uml:Trigger" xmi:id="_lIgO8Aa2EemGqa4rhguvBA" event="_lCaOAAa2EemGqa4rhguvBA"/>
               </transition>
-              <transition xmi:type="uml:Transition" xmi:id="_njGpIAa2EemGqa4rhguvBA" source="_W26_sAa2EemGqa4rhguvBA" target="_vUjTkAazEemGqa4rhguvBA">
+              <transition xmi:type="uml:Transition" xmi:id="_njGpIAa2EemGqa4rhguvBA" name="suspended_t_shelved" source="_W26_sAa2EemGqa4rhguvBA" target="_vUjTkAazEemGqa4rhguvBA">
                 <trigger xmi:type="uml:Trigger" xmi:id="_phxVQAa2EemGqa4rhguvBA" event="_Ds1bUAa0EemGqa4rhguvBA"/>
+              </transition>
+              <transition xmi:type="uml:Transition" xmi:id="_sPcC4AnLEemfvIaM__DpQQ" name="running_t_running_e_rebuild" source="_mvRnOQawEemGqa4rhguvBA" target="_mvRnOQawEemGqa4rhguvBA">
+                <trigger xmi:type="uml:Trigger" xmi:id="_v5AxoAnLEemfvIaM__DpQQ" event="_2T1kcAa0EemGqa4rhguvBA"/>
               </transition>
               <subvertex xmi:type="uml:State" xmi:id="_mvRnOQawEemGqa4rhguvBA" name="RUNNING"/>
               <subvertex xmi:type="uml:Pseudostate" xmi:id="_qg9wIAawEemGqa4rhguvBA" name=""/>
@@ -103,6 +105,14 @@
           <subvertex xmi:type="uml:State" xmi:id="_queY8Aa2EemGqa4rhguvBA" name="DELETED"/>
         </region>
       </ownedBehavior>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_YwTrgAndEemfvIaM__DpQQ" name="ilog" method="_yF2-gAndEemfvIaM__DpQQ">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_h1vmAAndEemfvIaM__DpQQ" name="x">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_kw03EAndEemfvIaM__DpQQ" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        </ownedParameter>
+      </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_GBJ2EAauEemGqa4rhguvBA" name="SystemLimits">
       <ownedAttribute xmi:type="uml:Property" xmi:id="_IbyFcAauEemGqa4rhguvBA" name="processors">
@@ -120,7 +130,15 @@
         <ownedAttribute xmi:type="uml:Property" xmi:id="_LVJp0AavEemGqa4rhguvBA" name="image">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_mYxoMAavEemGqa4rhguvBA" name="flavor" type="_Wsy3gAavEemGqa4rhguvBA"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_d86REAnOEemfvIaM__DpQQ" name="flavor_processors">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_itpcMAnOEemfvIaM__DpQQ" name="flavor_memory">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_lnYCYAnOEemfvIaM__DpQQ" name="flavor_storage">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        </ownedAttribute>
       </packagedElement>
       <packagedElement xmi:type="uml:Signal" xmi:id="_JNojsAavEemGqa4rhguvBA" name="Rebuild">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_72M2QAazEemGqa4rhguvBA" name="image">
@@ -144,7 +162,15 @@
       <packagedElement xmi:type="uml:SignalEvent" xmi:id="_yaBaQAa0EemGqa4rhguvBA" name="RebootEvent" signal="_eIDV4Aa0EemGqa4rhguvBA"/>
       <packagedElement xmi:type="uml:SignalEvent" xmi:id="_2T1kcAa0EemGqa4rhguvBA" name="RebuildEvent" signal="_JNojsAavEemGqa4rhguvBA"/>
       <packagedElement xmi:type="uml:Signal" xmi:id="_CMmiMAa1EemGqa4rhguvBA" name="Resize">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_DC0YgAa1EemGqa4rhguvBA" name="flavor" type="_Wsy3gAavEemGqa4rhguvBA"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_u5TgwAnOEemfvIaM__DpQQ" name="flavor_processors">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_w6G64AnOEemfvIaM__DpQQ" name="flavor_memory">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_ynRAQAnOEemfvIaM__DpQQ" name="flavor_storage">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        </ownedAttribute>
       </packagedElement>
       <packagedElement xmi:type="uml:SignalEvent" xmi:id="_JXh30Aa1EemGqa4rhguvBA" name="ResizeEvent" signal="_CMmiMAa1EemGqa4rhguvBA"/>
       <packagedElement xmi:type="uml:Signal" xmi:id="_sAq2EAa1EemGqa4rhguvBA" name="Confirm"/>
@@ -168,6 +194,14 @@
       <ownedAttribute xmi:type="uml:Property" xmi:id="_ZXdG8AavEemGqa4rhguvBA" name="storage">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
       </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:OpaqueBehavior" xmi:id="_yF2-gAndEemfvIaM__DpQQ" name="logMethod" specification="_YwTrgAndEemfvIaM__DpQQ">
+      <language>JAVA</language>
+      <body>return (int) (Math.log(x) / Math.log(2));</body>
+    </packagedElement>
+    <packagedElement xmi:type="uml:OpaqueBehavior" xmi:id="_lUNwoAngEemfvIaM__DpQQ" name="log">
+      <language>JAVA</language>
+      <body>return Math.log(x) / Math.log(2);</body>
     </packagedElement>
   </packagedElement>
 </uml:Model>

@@ -1,0 +1,65 @@
+!setup
+generic: !conf
+  xmiFilePath: theVmStates.uml
+  instanceSpecFilePath: instanceSpec.yaml
+  classpath: statemutest.jar
+  stateIdentities:
+    - ACTIVE
+    - INIT
+    - RUNNING
+    - PAUSED
+    - STOPPED
+    - SUSPENDED
+    - RESIZED
+    - SHELVED
+    - DELETED
+  knowableStateIdentities:
+    - ACTIVE
+    - RUNNING
+    - PAUSED
+    - STOPPED
+    - SUSPENDED
+    - RESIZED
+    - SHELVED
+    - DELETED
+    - INIT
+  stateIdentitiesIdentifier: name
+  coverageTransitionSetIdentifier: name
+  testClassQualifiedName: root.Vm
+  userDefinedStateInputMappings:
+  - !stateInputMapping
+    stateIdentity: __default__
+    inputClassQualifiedName: root.signals.Build
+    fieldName: flavor_processors
+    lowerBound: 0
+    upperBound: 10
+  - !stateInputMapping
+    stateIdentity: __default__
+    inputClassQualifiedName: root.signals.Build
+    fieldName: flavors_memory
+    lowerBound: 0
+    upperBound: 5000
+  - !stateInputMapping
+    stateIdentity: __default__
+    inputClassQualifiedName: root.signals.Build
+    fieldName: image
+    lowerBound: 0
+    upperBound: 1
+  - !stateInputMapping
+    stateIdentity: __default__
+    inputClassQualifiedName: root.signals.Resize
+    fieldName: flavor_processors
+    lowerBound: 0
+    upperBound: 10
+  - !stateInputMapping
+    stateIdentity: __default__
+    inputClassQualifiedName: root.signals.Resize
+    fieldName: flavor_memory
+    lowerBound: 0
+    upperBound: 5000
+  - !stateInputMapping
+    stateIdentity: __default__
+    inputClassQualifiedName: root.signals.Rebuild
+    fieldName: image
+    lowerBound: 0
+    upperBound: 1
