@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_RjEtoBKBEemlZKPUngXNgQ" name="theVmStates2">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_Ruy1cBKBEemlZKPUngXNgQ">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Package" xmi:id="_a2_wEBKBEemlZKPUngXNgQ" name="root">
+    <packagedElement xmi:type="uml:Class" xmi:id="_eFUGMBKBEemlZKPUngXNgQ" name="TheVm" classifierBehavior="__TDj0BKJEemlZKPUngXNgQ">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_by0Z8BKTEemlZKPUngXNgQ" name="quota_memory">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_dNPJgBKTEemlZKPUngXNgQ" name="quota_vcpus">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_9AG3UBm8Eemwy8g4iWOhZQ" name="power">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+      <ownedBehavior xmi:type="uml:StateMachine" xmi:id="__TDj0BKJEemlZKPUngXNgQ" name="TheVm">
+        <region xmi:type="uml:Region" xmi:id="_AMaNsBKKEemlZKPUngXNgQ" name="Region1">
+          <transition xmi:type="uml:Transition" xmi:id="_YszaUBKKEemlZKPUngXNgQ" source="_XroRMBKKEemlZKPUngXNgQ" target="_RcxiQBKKEemlZKPUngXNgQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_d3IxMBKKEemlZKPUngXNgQ" name="t_build" guard="_QheiMBKLEemlZKPUngXNgQ" source="_RcxiQBKKEemlZKPUngXNgQ" target="_NBYVABKKEemlZKPUngXNgQ">
+            <ownedRule xmi:type="uml:Constraint" xmi:id="_QheiMBKLEemlZKPUngXNgQ">
+              <specification xmi:type="uml:OpaqueExpression" xmi:id="_QheiMRKLEemlZKPUngXNgQ">
+                <language>JAVA</language>
+                <body>event.vcpus > 0 &amp;&amp; event.vcpus &lt; quota_vcpus &amp;&amp; event.memory > 0 &amp;&amp; event.memory &lt; quota_memory</body>
+              </specification>
+            </ownedRule>
+            <trigger xmi:type="uml:Trigger" xmi:id="_2dElIBKKEemlZKPUngXNgQ" event="_2QkaMBKKEemlZKPUngXNgQ"/>
+          </transition>
+          <transition xmi:type="uml:Transition" xmi:id="_fkVS0BKKEemlZKPUngXNgQ" name="t_delete" source="_NBYVABKKEemlZKPUngXNgQ" target="_PCDMQBKKEemlZKPUngXNgQ">
+            <trigger xmi:type="uml:Trigger" xmi:id="_BNeMoBKLEemlZKPUngXNgQ" event="_BFswsBKLEemlZKPUngXNgQ"/>
+          </transition>
+          <transition xmi:type="uml:Transition" xmi:id="_f5j78BKKEemlZKPUngXNgQ" name="t_reset" source="_NBYVABKKEemlZKPUngXNgQ" target="_PSxI0BKKEemlZKPUngXNgQ">
+            <trigger xmi:type="uml:Trigger" xmi:id="_Ec59EBKLEemlZKPUngXNgQ" event="_ETp6cBKLEemlZKPUngXNgQ"/>
+          </transition>
+          <transition xmi:type="uml:Transition" xmi:id="_gg0wQBKKEemlZKPUngXNgQ" name="t_delete_from_error" source="_PSxI0BKKEemlZKPUngXNgQ" target="_PCDMQBKKEemlZKPUngXNgQ">
+            <trigger xmi:type="uml:Trigger" xmi:id="_F78t8BKLEemlZKPUngXNgQ" event="_BFswsBKLEemlZKPUngXNgQ"/>
+          </transition>
+          <subvertex xmi:type="uml:State" xmi:id="_NBYVABKKEemlZKPUngXNgQ" name="ACTIVE">
+            <region xmi:type="uml:Region" xmi:id="_RyUfABKLEemlZKPUngXNgQ" name="Region1">
+              <transition xmi:type="uml:Transition" xmi:id="_VYsIwBKLEemlZKPUngXNgQ" source="_UATZgBKLEemlZKPUngXNgQ" target="_RyXiUBKLEemlZKPUngXNgQ"/>
+              <transition xmi:type="uml:Transition" xmi:id="_dfnMkBKLEemlZKPUngXNgQ" name="t_pause" source="_RyXiUBKLEemlZKPUngXNgQ" target="_bvmngBKLEemlZKPUngXNgQ">
+                <trigger xmi:type="uml:Trigger" xmi:id="_ruE2YBKLEemlZKPUngXNgQ" event="_ri_nwBKLEemlZKPUngXNgQ"/>
+              </transition>
+              <transition xmi:type="uml:Transition" xmi:id="_eSKD0BKLEemlZKPUngXNgQ" name="t_unpause" source="_bvmngBKLEemlZKPUngXNgQ" target="_RyXiUBKLEemlZKPUngXNgQ">
+                <trigger xmi:type="uml:Trigger" xmi:id="_u4NQEBKLEemlZKPUngXNgQ" event="_uuD1kBKLEemlZKPUngXNgQ"/>
+              </transition>
+              <transition xmi:type="uml:Transition" xmi:id="_fDR-wBKLEemlZKPUngXNgQ" name="t_shelve_from_paused" source="_bvmngBKLEemlZKPUngXNgQ" target="_aj-h4BKLEemlZKPUngXNgQ">
+                <trigger xmi:type="uml:Trigger" xmi:id="_yHsq4BKLEemlZKPUngXNgQ" event="_x84iABKLEemlZKPUngXNgQ"/>
+              </transition>
+              <transition xmi:type="uml:Transition" xmi:id="_zRb6IBKLEemlZKPUngXNgQ" name="t_rebuild" source="_RyXiUBKLEemlZKPUngXNgQ" target="_RyXiUBKLEemlZKPUngXNgQ">
+                <trigger xmi:type="uml:Trigger" xmi:id="_6oVPMBKLEemlZKPUngXNgQ" event="_6h9hcBKLEemlZKPUngXNgQ"/>
+              </transition>
+              <transition xmi:type="uml:Transition" xmi:id="_9PL8sBKLEemlZKPUngXNgQ" name="t_reboot" source="_RyXiUBKLEemlZKPUngXNgQ" target="_RyXiUBKLEemlZKPUngXNgQ">
+                <trigger xmi:type="uml:Trigger" xmi:id="_EuoJwBKMEemlZKPUngXNgQ" event="_EnjRYBKMEemlZKPUngXNgQ"/>
+              </transition>
+              <transition xmi:type="uml:Transition" xmi:id="_FxptABKMEemlZKPUngXNgQ" name="t_shelve" source="_RyXiUBKLEemlZKPUngXNgQ" target="_aj-h4BKLEemlZKPUngXNgQ">
+                <trigger xmi:type="uml:Trigger" xmi:id="_IOlpgBKMEemlZKPUngXNgQ" event="_x84iABKLEemlZKPUngXNgQ"/>
+              </transition>
+              <transition xmi:type="uml:Transition" xmi:id="_GVpK4BKMEemlZKPUngXNgQ" name="t_unshelve" source="_aj-h4BKLEemlZKPUngXNgQ" target="_RyXiUBKLEemlZKPUngXNgQ">
+                <trigger xmi:type="uml:Trigger" xmi:id="_OMoVQBKMEemlZKPUngXNgQ" event="_OFImIBKMEemlZKPUngXNgQ"/>
+              </transition>
+              <transition xmi:type="uml:Transition" xmi:id="_Sl-UEBKMEemlZKPUngXNgQ" name="t_shutoff" source="_RyXiUBKLEemlZKPUngXNgQ" target="_PyAXoBKMEemlZKPUngXNgQ">
+                <trigger xmi:type="uml:Trigger" xmi:id="_aAou0BKMEemlZKPUngXNgQ" event="_Z6-ywBKMEemlZKPUngXNgQ"/>
+              </transition>
+              <transition xmi:type="uml:Transition" xmi:id="_TO-00BKMEemlZKPUngXNgQ" name="t_start_from_stopped" source="_PyAXoBKMEemlZKPUngXNgQ" target="_RyXiUBKLEemlZKPUngXNgQ">
+                <trigger xmi:type="uml:Trigger" xmi:id="_d3GqEBKMEemlZKPUngXNgQ" event="_dr3qcBKMEemlZKPUngXNgQ"/>
+              </transition>
+              <transition xmi:type="uml:Transition" xmi:id="_gFU1IBKMEemlZKPUngXNgQ" name="t_rebuild_from_stopped" source="_PyAXoBKMEemlZKPUngXNgQ" target="_PyAXoBKMEemlZKPUngXNgQ">
+                <trigger xmi:type="uml:Trigger" xmi:id="_jUlmcBKMEemlZKPUngXNgQ" event="_6h9hcBKLEemlZKPUngXNgQ"/>
+              </transition>
+              <transition xmi:type="uml:Transition" xmi:id="_r9n40BKMEemlZKPUngXNgQ" name="t_resize_from_stopped" guard="_fv9zsBKNEemlZKPUngXNgQ" source="_PyAXoBKMEemlZKPUngXNgQ" target="_Q64EMBKMEemlZKPUngXNgQ">
+                <ownedRule xmi:type="uml:Constraint" xmi:id="_fv9zsBKNEemlZKPUngXNgQ">
+                  <specification xmi:type="uml:OpaqueExpression" xmi:id="_fv9zsRKNEemlZKPUngXNgQ">
+                    <language>JAVA</language>
+                    <body>event.vcpus > 0 &amp;&amp; event.vcpus &lt; quota_vcpus &amp;&amp; event.memory > 0 &amp;&amp; event.memory &lt; quota_memory</body>
+                  </specification>
+                </ownedRule>
+                <trigger xmi:type="uml:Trigger" xmi:id="_-r3goBKMEemlZKPUngXNgQ" event="_0KjeABKMEemlZKPUngXNgQ"/>
+              </transition>
+              <transition xmi:type="uml:Transition" xmi:id="_WnaTwBKNEemlZKPUngXNgQ" name="t_resize" guard="_-zO3cBKNEemlZKPUngXNgQ" source="_RyXiUBKLEemlZKPUngXNgQ" target="_Q64EMBKMEemlZKPUngXNgQ">
+                <ownedRule xmi:type="uml:Constraint" xmi:id="_-zO3cBKNEemlZKPUngXNgQ">
+                  <specification xmi:type="uml:OpaqueExpression" xmi:id="_-zO3cRKNEemlZKPUngXNgQ">
+                    <language>JAVA</language>
+                    <body>event.vcpus > 0 &amp;&amp; event.vcpus &lt; quota_vcpus &amp;&amp; event.memory > 0 &amp;&amp; event.memory &lt; quota_memory</body>
+                  </specification>
+                </ownedRule>
+                <trigger xmi:type="uml:Trigger" xmi:id="_YeTj8BKNEemlZKPUngXNgQ" event="_0KjeABKMEemlZKPUngXNgQ"/>
+              </transition>
+              <transition xmi:type="uml:Transition" xmi:id="_p7Zs8BKNEemlZKPUngXNgQ" name="t_suspend" source="_RyXiUBKLEemlZKPUngXNgQ" target="_n7m04BKMEemlZKPUngXNgQ">
+                <trigger xmi:type="uml:Trigger" xmi:id="_4GEb4BKNEemlZKPUngXNgQ" event="_3-3AoBKNEemlZKPUngXNgQ"/>
+              </transition>
+              <transition xmi:type="uml:Transition" xmi:id="_u2ML8BKNEemlZKPUngXNgQ" name="t_resume" source="_n7m04BKMEemlZKPUngXNgQ" target="_RyXiUBKLEemlZKPUngXNgQ">
+                <trigger xmi:type="uml:Trigger" xmi:id="_zJTm8BKNEemlZKPUngXNgQ" event="_zBxbkBKNEemlZKPUngXNgQ"/>
+              </transition>
+              <transition xmi:type="uml:Transition" xmi:id="_AQKvgBKOEemlZKPUngXNgQ" name="t_confirm" guard="_JvmBsBm9Eemwy8g4iWOhZQ" source="_Q64EMBKMEemlZKPUngXNgQ" target="_RyXiUBKLEemlZKPUngXNgQ">
+                <ownedRule xmi:type="uml:Constraint" xmi:id="_JvmBsBm9Eemwy8g4iWOhZQ">
+                  <specification xmi:type="uml:OpaqueExpression" xmi:id="_JvmBsRm9Eemwy8g4iWOhZQ">
+                    <language>JAVA</language>
+                    <body>power==1</body>
+                  </specification>
+                </ownedRule>
+                <trigger xmi:type="uml:Trigger" xmi:id="_GjaPMBKOEemlZKPUngXNgQ" event="_GcdSoBKOEemlZKPUngXNgQ"/>
+              </transition>
+              <transition xmi:type="uml:Transition" xmi:id="_HVuc8BKOEemlZKPUngXNgQ" name="t_revert" guard="_G7uy8Bm9Eemwy8g4iWOhZQ" source="_Q64EMBKMEemlZKPUngXNgQ" target="_RyXiUBKLEemlZKPUngXNgQ">
+                <ownedRule xmi:type="uml:Constraint" xmi:id="_G7uy8Bm9Eemwy8g4iWOhZQ">
+                  <specification xmi:type="uml:OpaqueExpression" xmi:id="_G7uy8Rm9Eemwy8g4iWOhZQ">
+                    <language>JAVA</language>
+                    <body>power==1</body>
+                  </specification>
+                </ownedRule>
+                <trigger xmi:type="uml:Trigger" xmi:id="_LBnf4BKOEemlZKPUngXNgQ" event="_K7qB0BKOEemlZKPUngXNgQ"/>
+              </transition>
+              <transition xmi:type="uml:Transition" xmi:id="_NTVOMBm9Eemwy8g4iWOhZQ" name="t_confirm_from_resized" guard="_V45V0Bm9Eemwy8g4iWOhZQ" source="_Q64EMBKMEemlZKPUngXNgQ" target="_PyAXoBKMEemlZKPUngXNgQ">
+                <ownedRule xmi:type="uml:Constraint" xmi:id="_V45V0Bm9Eemwy8g4iWOhZQ">
+                  <specification xmi:type="uml:OpaqueExpression" xmi:id="_V45V0Rm9Eemwy8g4iWOhZQ">
+                    <language>JAVA</language>
+                    <body>power==0</body>
+                  </specification>
+                </ownedRule>
+                <trigger xmi:type="uml:Trigger" xmi:id="_TevAgBm9Eemwy8g4iWOhZQ" event="_GcdSoBKOEemlZKPUngXNgQ"/>
+              </transition>
+              <transition xmi:type="uml:Transition" xmi:id="_W8uxYBm9Eemwy8g4iWOhZQ" name="t_revert_from_resized" guard="_cC72MBm9Eemwy8g4iWOhZQ" source="_Q64EMBKMEemlZKPUngXNgQ" target="_PyAXoBKMEemlZKPUngXNgQ">
+                <ownedRule xmi:type="uml:Constraint" xmi:id="_cC72MBm9Eemwy8g4iWOhZQ">
+                  <specification xmi:type="uml:OpaqueExpression" xmi:id="_cC72MRm9Eemwy8g4iWOhZQ">
+                    <language>JAVA</language>
+                    <body>power==0</body>
+                  </specification>
+                </ownedRule>
+                <trigger xmi:type="uml:Trigger" xmi:id="_Zxoh8Bm9Eemwy8g4iWOhZQ" event="_K7qB0BKOEemlZKPUngXNgQ"/>
+              </transition>
+              <subvertex xmi:type="uml:State" xmi:id="_RyXiUBKLEemlZKPUngXNgQ" name="RUNNING">
+                <entry xmi:type="uml:OpaqueBehavior" xmi:id="_f31rMBm9Eemwy8g4iWOhZQ">
+                  <language>JAVA</language>
+                  <body>power=1;</body>
+                </entry>
+              </subvertex>
+              <subvertex xmi:type="uml:Pseudostate" xmi:id="_UATZgBKLEemlZKPUngXNgQ" name=""/>
+              <subvertex xmi:type="uml:State" xmi:id="_aj-h4BKLEemlZKPUngXNgQ" name="SHELVED"/>
+              <subvertex xmi:type="uml:State" xmi:id="_bvmngBKLEemlZKPUngXNgQ" name="PAUSED"/>
+              <subvertex xmi:type="uml:State" xmi:id="_PyAXoBKMEemlZKPUngXNgQ" name="STOPPED">
+                <entry xmi:type="uml:OpaqueBehavior" xmi:id="_jiNEIBm9Eemwy8g4iWOhZQ">
+                  <language>JAVA</language>
+                  <body>power=0;</body>
+                </entry>
+              </subvertex>
+              <subvertex xmi:type="uml:State" xmi:id="_Q64EMBKMEemlZKPUngXNgQ" name="RESIZED"/>
+              <subvertex xmi:type="uml:State" xmi:id="_n7m04BKMEemlZKPUngXNgQ" name="SUSPENDED"/>
+            </region>
+          </subvertex>
+          <subvertex xmi:type="uml:State" xmi:id="_PCDMQBKKEemlZKPUngXNgQ" name="DELETED"/>
+          <subvertex xmi:type="uml:State" xmi:id="_PSxI0BKKEemlZKPUngXNgQ" name="ERROR"/>
+          <subvertex xmi:type="uml:State" xmi:id="_RcxiQBKKEemlZKPUngXNgQ" name="IDLE"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_XroRMBKKEemlZKPUngXNgQ" name=""/>
+        </region>
+      </ownedBehavior>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_D0z3wBKKEemlZKPUngXNgQ" name="signals">
+      <packagedElement xmi:type="uml:Signal" xmi:id="_k1wJIBKKEemlZKPUngXNgQ" name="Build">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_m3ae4BKKEemlZKPUngXNgQ" name="vcpus">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_tEuVsBKKEemlZKPUngXNgQ" name="memory">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:SignalEvent" xmi:id="_2QkaMBKKEemlZKPUngXNgQ" name="BuildSignalEvent" signal="_k1wJIBKKEemlZKPUngXNgQ"/>
+      <packagedElement xmi:type="uml:Signal" xmi:id="_4HITMBKKEemlZKPUngXNgQ" name="Delete"/>
+      <packagedElement xmi:type="uml:Signal" xmi:id="_42laMBKKEemlZKPUngXNgQ" name="Reset"/>
+      <packagedElement xmi:type="uml:SignalEvent" xmi:id="_BFswsBKLEemlZKPUngXNgQ" name="DeleteSignalEvent" signal="_4HITMBKKEemlZKPUngXNgQ"/>
+      <packagedElement xmi:type="uml:SignalEvent" xmi:id="_ETp6cBKLEemlZKPUngXNgQ" signal="_42laMBKKEemlZKPUngXNgQ"/>
+      <packagedElement xmi:type="uml:Signal" xmi:id="_jDdPoBKLEemlZKPUngXNgQ" name="Pause"/>
+      <packagedElement xmi:type="uml:Signal" xmi:id="_jsXCsBKLEemlZKPUngXNgQ" name="Unpause"/>
+      <packagedElement xmi:type="uml:Signal" xmi:id="_lZGRUBKLEemlZKPUngXNgQ" name="Shelve"/>
+      <packagedElement xmi:type="uml:SignalEvent" xmi:id="_ri_nwBKLEemlZKPUngXNgQ" name="PauseSignalEvent" signal="_jDdPoBKLEemlZKPUngXNgQ"/>
+      <packagedElement xmi:type="uml:SignalEvent" xmi:id="_uuD1kBKLEemlZKPUngXNgQ" name="UnpauseSignalEvent" signal="_jsXCsBKLEemlZKPUngXNgQ"/>
+      <packagedElement xmi:type="uml:SignalEvent" xmi:id="_x84iABKLEemlZKPUngXNgQ" name="ShelveSignalEvent" signal="_lZGRUBKLEemlZKPUngXNgQ"/>
+      <packagedElement xmi:type="uml:Signal" xmi:id="_15pSgBKLEemlZKPUngXNgQ" name="Rebuild"/>
+      <packagedElement xmi:type="uml:Signal" xmi:id="_2hJ-cBKLEemlZKPUngXNgQ" name="Reboot"/>
+      <packagedElement xmi:type="uml:SignalEvent" xmi:id="_6h9hcBKLEemlZKPUngXNgQ" name="RebuildSignalEvent" signal="_15pSgBKLEemlZKPUngXNgQ"/>
+      <packagedElement xmi:type="uml:SignalEvent" xmi:id="_EnjRYBKMEemlZKPUngXNgQ" name="RebootSignalEvent" signal="_2hJ-cBKLEemlZKPUngXNgQ"/>
+      <packagedElement xmi:type="uml:Signal" xmi:id="_JLWMsBKMEemlZKPUngXNgQ" name="Unshelve"/>
+      <packagedElement xmi:type="uml:SignalEvent" xmi:id="_OFImIBKMEemlZKPUngXNgQ" name="UnshelveSignalEvent" signal="_JLWMsBKMEemlZKPUngXNgQ"/>
+      <packagedElement xmi:type="uml:Signal" xmi:id="_UBQmUBKMEemlZKPUngXNgQ" name="Shutoff"/>
+      <packagedElement xmi:type="uml:Signal" xmi:id="_U1OZ4BKMEemlZKPUngXNgQ" name="Start"/>
+      <packagedElement xmi:type="uml:SignalEvent" xmi:id="_Z6-ywBKMEemlZKPUngXNgQ" name="ShutoffSignalEvent" signal="_UBQmUBKMEemlZKPUngXNgQ"/>
+      <packagedElement xmi:type="uml:SignalEvent" xmi:id="_dr3qcBKMEemlZKPUngXNgQ" name="StartSignalEvent" signal="_U1OZ4BKMEemlZKPUngXNgQ"/>
+      <packagedElement xmi:type="uml:Signal" xmi:id="_s4b7QBKMEemlZKPUngXNgQ" name="Resize">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_tv1dUBKMEemlZKPUngXNgQ" name="vcpus">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_vjS_ABKMEemlZKPUngXNgQ" name="memory">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:SignalEvent" xmi:id="_0KjeABKMEemlZKPUngXNgQ" name="ResizeSignalEvent" signal="_s4b7QBKMEemlZKPUngXNgQ"/>
+      <packagedElement xmi:type="uml:Signal" xmi:id="_rgv6IBKNEemlZKPUngXNgQ" name="Suspend"/>
+      <packagedElement xmi:type="uml:Signal" xmi:id="_tSwqUBKNEemlZKPUngXNgQ" name="Resume"/>
+      <packagedElement xmi:type="uml:SignalEvent" xmi:id="_zBxbkBKNEemlZKPUngXNgQ" name="ResumeSignalEvent" signal="_tSwqUBKNEemlZKPUngXNgQ"/>
+      <packagedElement xmi:type="uml:SignalEvent" xmi:id="_3-3AoBKNEemlZKPUngXNgQ" name="SuspendSignalEvent" signal="_rgv6IBKNEemlZKPUngXNgQ"/>
+      <packagedElement xmi:type="uml:Signal" xmi:id="_BqFIwBKOEemlZKPUngXNgQ" name="Confirm"/>
+      <packagedElement xmi:type="uml:Signal" xmi:id="_CKXLUBKOEemlZKPUngXNgQ" name="Revert"/>
+      <packagedElement xmi:type="uml:SignalEvent" xmi:id="_GcdSoBKOEemlZKPUngXNgQ" name="ConfirmSignalEvent" signal="_BqFIwBKOEemlZKPUngXNgQ"/>
+      <packagedElement xmi:type="uml:SignalEvent" xmi:id="_K7qB0BKOEemlZKPUngXNgQ" name="RevertSignalEvent" signal="_CKXLUBKOEemlZKPUngXNgQ"/>
+    </packagedElement>
+  </packagedElement>
+</uml:Model>
