@@ -1,0 +1,3 @@
+quota_vcpus: 2
+quota_memory: 500
+power: 0

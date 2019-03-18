@@ -1,0 +1,68 @@
+!setup
+generic: !conf
+  xmiFilePath: ../theVmStates2.uml
+  instanceSpecFilePath: files/instanceSpec.yaml
+  classpath: statemutest.jar
+  stateIdentities: []
+  knowableStateIdentities:
+    - IDLE
+    - DELETED
+    - ERROR
+    - PAUSED
+    - SHELVED
+    - RUNNING
+    - ACTIVE
+    - STOPPED
+    - SUSPENDED
+    - RESIZED
+  stateIdentitiesIdentifier: name
+  coverageTransitionSetIdentifier: name
+  testClassQualifiedName: root.TheVm
+  userDefinedStateInputMappings:
+  - !stateInputMapping
+    stateIdentity: __default__
+    inputClassQualifiedName: root.signals.Build
+    fieldName: vcpus
+    upperBound: 10
+    lowerBound: 0
+  - !stateInputMapping
+    stateIdentity: __default__
+    inputClassQualifiedName: root.signals.Build
+    fieldName: memory
+    upperBound: 1000
+    lowerBound: 0
+  - !stateInputMapping
+    stateIdentity: __default__
+    inputClassQualifiedName: root.signals.Resize
+    fieldName: vcpus
+    upperBound: 10
+    lowerBound: 0
+  - !stateInputMapping
+    stateIdentity: __default__
+    inputClassQualifiedName: root.signals.Resize
+    fieldName: memory
+    upperBound: 1000
+    lowerBound: 0
+  inputQualifiedNames:
+    - root.signals.Build
+    - root.signals.Pause
+    - root.signals.Unpause
+    - root.signals.Shelve
+    - root.signals.Unshelve
+    - root.signals.Delete
+    - root.signals.Reset
+    - root.signals.Suspend
+    - root.signals.Resume
+    - root.signals.Rebuild
+    - root.signals.Resize
+    - root.signals.Confirm
+    - root.signals.Revert
+    - root.signals.Reboot
+    - root.signals.Start
+    - root.signals.Shutoff
+method: !mgeovsl
+  tau: 1.5
+  numberOfIterations: 5000
+  numberOfIndependentRuns: 1
+  maxVars: 30
+  minVars: 10
