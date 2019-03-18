@@ -1,0 +1,66 @@
+!setup
+generic: 
+   classpath: statemutest.jar
+   coverageTransitionSet: 
+   - t_build
+   coverageTransitionSetIdentifier: name
+   inputQualifiedNames: 
+   - root.signals.Build
+   - root.signals.Pause
+   - root.signals.Unpause
+   - root.signals.Shelve
+   - root.signals.Unshelve
+   - root.signals.Delete
+   - root.signals.Reset
+   - root.signals.Suspend
+   - root.signals.Resume
+   - root.signals.Rebuild
+   - root.signals.Resize
+   - root.signals.Confirm
+   - root.signals.Revert
+   - root.signals.Reboot
+   - root.signals.Start
+   - root.signals.Shutoff
+   instanceSpecFilePath: files/instanceSpec.yaml
+   knowableStateIdentities: 
+   - IDLE
+   - DELETED
+   - ERROR
+   - PAUSED
+   - SHELVED
+   - RUNNING
+   - ACTIVE
+   - STOPPED
+   - SUSPENDED
+   - RESIZED
+   stateIdentities: []
+   stateIdentitiesIdentifier: name
+   testClassQualifiedName: root.TheVm
+   userDefinedStateInputMappings: 
+   - !stateInputMapping
+      fieldName: vcpus
+      inputClassQualifiedName: root.signals.Build
+      stateIdentity: __default__
+      upperBound: 10
+   - !stateInputMapping
+      fieldName: memory
+      inputClassQualifiedName: root.signals.Build
+      stateIdentity: __default__
+      upperBound: 1000
+   - !stateInputMapping
+      fieldName: vcpus
+      inputClassQualifiedName: root.signals.Resize
+      stateIdentity: __default__
+      upperBound: 10
+   - !stateInputMapping
+      fieldName: memory
+      inputClassQualifiedName: root.signals.Resize
+      stateIdentity: __default__
+      upperBound: 1000
+   xmiFilePath: ../theVmStates2.uml
+method: !mgeovsl
+   maxVars: 30
+   minVars: 10
+   numberOfIndependentRuns: 2
+   numberOfIterations: 30000
+   tau: 1.5
