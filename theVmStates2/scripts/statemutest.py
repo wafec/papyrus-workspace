@@ -20,6 +20,15 @@ def exec_proc(desc, proc):
         proc.wait()
 
 
+def exec_batch(desc, batch_cmd, output_file):
+    if not vQuit:
+        with vLock:
+            print("Processing", desc, "with Thread", threading.current_thread().getName())
+            print("Logging", desc, "to", output_file)
+        with open(output_file, 'w') as writer:
+            subprocess.call(batch_cmd, stdout=writer)
+
+
 def process_dirs(param_dir, dest):
     setups = [x for x in os.listdir(param_dir) if x.startswith("setup_t_")]
 
@@ -55,7 +64,7 @@ def process_dirs(param_dir, dest):
                 tau += 0.25
 
 
-def process_statemutest(tests_dir, workers):
+def process_statemutest(tests_dir, workers, clean):
     with ThreadPoolExecutor(max_workers=workers) as executor:
         for transition in os.listdir(tests_dir):
             transition_dir = os.path.join(tests_dir, transition)
@@ -63,18 +72,36 @@ def process_statemutest(tests_dir, workers):
                 for configuration in os.listdir(transition_dir):
                     configuration_dir = os.path.join(transition_dir, configuration)
                     if os.path.isdir(configuration_dir):
+                        others = [x for x in os.listdir(configuration_dir) if
+                                  os.path.isdir(os.path.join(configuration_dir, x))]
+                        logs = [x for x in os.listdir(configuration_dir) if
+                                x.endswith(".log")]
+                        if clean:
+                            for other in others:
+                                try:
+                                    shutil.rmtree(os.path.join(configuration_dir, other))
+                                    print("Removed", os.path.join(configuration_dir, other))
+                                except Exception:
+                                    print("Error trying to remove a configuration",
+                                          os.path.join(configuration_dir, other))
+                            for log in logs:
+                                os.remove(os.path.join(configuration_dir, log))
+                                print("Removed", os.path.join(configuration_dir, log))
+                            continue
                         setup_file = os.path.join(configuration_dir, "setup.yaml")
                         if os.path.exists(setup_file):
-                            fdate = datetime.datetime.date().today().strftime("%b_%d_%Y")
+                            fdate = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
+                            log = os.path.join(configuration_dir, fdate + ".log")
                             dest = os.path.join(configuration_dir, fdate)
                             os.mkdir(dest)
-                            proc = subprocess.Popen("statemutest.bat %s %s" % (dest, setup_file), shell=True)
-                            future = executor.submit(exec_proc, setup_file, proc)
+                            #proc = subprocess.Popen("statemutest.bat %s %s" % (dest, setup_file), shell=True)
+                            future = executor.submit(exec_batch, setup_file, "statemutest.bat %s %s" % (dest, setup_file),
+                                                     log)
 
 
 if __name__ == "__main__":
     def statemutest_args(args):
-        process_statemutest(args.test_dirs, args.workers)
+        process_statemutest(args.test_dirs, args.workers, args.clean)
 
     def dirs_args(args):
         process_dirs(args.param_dir, args.dest)
@@ -85,6 +112,7 @@ if __name__ == "__main__":
     statemutest = sub.add_parser("statemutest")
     statemutest.add_argument("test_dirs", type=str)
     statemutest.add_argument("workers", type=int, default=2)
+    statemutest.add_argument("--clean", action="store_true")
     statemutest.set_defaults(func=statemutest_args)
 
     param = sub.add_parser("param")
