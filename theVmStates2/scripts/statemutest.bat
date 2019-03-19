@@ -14,4 +14,4 @@ java -cp statemutest.jar statemutest.application.TestCaseGeneration -s %setup_na
 set /a loopcount=loopcount-1
 goto loop
 :exitloop
-pause
+echo "Script finished."
