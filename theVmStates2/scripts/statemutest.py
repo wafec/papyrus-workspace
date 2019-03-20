@@ -25,14 +25,17 @@ def exec_batch(desc, batch_cmd, output_file):
         with vLock:
             print("Processing", desc, "with Thread", threading.current_thread().getName())
             print("Logging", desc, "to", output_file)
-        with open(output_file, 'w') as writer:
-            subprocess.call(batch_cmd, stdout=writer)
+        if output_file:
+            with open(output_file, 'w') as writer:
+                subprocess.call(batch_cmd, stdout=writer)
+        else:
+            subprocess.call(batch_cmd)
 
 
 def process_dirs(param_dir, dest):
     setups = [x for x in os.listdir(param_dir) if x.startswith("setup_t_")]
 
-    with ThreadPoolExecutor(max_workers=4) as executor:
+    with ThreadPoolExecutor(max_workers=2) as executor:
         for setup in setups:
             tau = 0.5
             while tau <= 5.0:
@@ -58,9 +61,8 @@ def process_dirs(param_dir, dest):
                         shutil.copyfile(os.path.join(param_dir, setup), setup_file)
 
                         for change in changes:
-                            proc = subprocess.Popen("python setups.py %s %s %s %s" % (setup_file, change[0], change[1],
-                                                                                      setup_file), shell=True)
-                            future = executor.submit(exec_proc, setup_file, proc)
+                            cmd = "python setups.py %s %s %s %s" % (setup_file, change[0], change[1], setup_file)
+                            future = executor.submit(exec_batch, setup_file, cmd, None)
                 tau += 0.25
 
 
